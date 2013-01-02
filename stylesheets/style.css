@@ -1,0 +1,21 @@
+body {
+    background-color: white;
+}
+
+#wrap {
+    max-width: 500px;
+    margin: auto;    
+}
+
+#header ul,#header li {
+    display: block;
+    text-align: right;    
+}
+
+article h1 {
+    border-bottom: solid 2px gray;    
+}
+
+article p {
+    text-indent: 1em;    
+}
