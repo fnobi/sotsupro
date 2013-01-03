@@ -2,6 +2,10 @@ body {
     background-color: white;
 }
 
+h1 {
+    padding: 0.5em 0em 0em 0em; margin: 0em;
+}
+
 #wrap {
     max-width: 500px;
     margin: auto;    
@@ -31,12 +35,21 @@ body {
 
 article h1 {
     border-bottom: solid 2px gray;    
+    font-size: 100%;
 }
 
 article p {
     text-indent: 1em;    
 }
 
+article section {
+    margin: 2em 0em;
+}
 article section section {
-    margin: 0em 0.5em;
+    margin: 0em;
+}
+
+article section section h1 {
+    border-style: none;   
+
 }
