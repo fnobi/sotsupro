@@ -6,13 +6,30 @@ block variables
 block content
   section
     h1 はじめに
+    p 非同期処理を含むWebインタフェースを構築するための手法として、state chartを取り入れたヴィジュアルプログラミング環境を提案する。
+    p 本システムを用いることで、
   section
     h1 問題提起
+    section
+      h1 Webページクライアントサイドにおける非同期処理
+    section
+      h1 問題点
+      p 重複する処理が多い
+      p 分かりづらく、ミスが増える。上から下の1方向に進むだけのソースコードで、非同期処理を読みやすく書くのは難しい。
+    section
+      h1 解決方法
+      p ヴィジュアルプログラミング環境を作成。非同期処理がいくつもある形の処理は、いつどの処理が終わるのを待っているか、待ち状態の遷移の形で表現できると考えられるため、state chartを取り入れた表現方法を用いる。
   section
     h1 先行研究との比較
   section
     h1 実装
+    section
+      h1 state chartの実装について
+    section
+      h1 システム詳細
   section
     h1 評価
   section
     h1 結び
+  section
+    h1 参考文献
