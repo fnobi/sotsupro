@@ -36,3 +36,7 @@ article h1 {
 article p {
     text-indent: 1em;    
 }
+
+article section section {
+    margin: 0em 0.5em;
+}
