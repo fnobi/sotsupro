@@ -2,6 +2,8 @@ doctype 5
 html
   block variables
   head
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
     link(rel="stylesheet", href="./stylesheets/style.css")
     script(type="text/javascript", src="./javascripts/jquery-1.8.2.js")
     script(type="text/javascript", src="./javascripts/toc.js")
@@ -9,11 +11,17 @@ html
   body
     div#wrap
       header#header
+        header 卒業論文 平成 24 年度(2012 年度)
         h1= title
-        ul
-         li 70948320
-         li t09832sf
-         li 藤澤伸
-      aside#toc
+        footer
+          慶應義塾大学 環境情報学部
+          br
+          藤澤伸
+      section#abstruct
+        h1 概要
+        block abstruct
+      section
+        h1 目次
+        aside#toc
       article#main
         block content
