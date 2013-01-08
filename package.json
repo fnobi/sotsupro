@@ -1,0 +1,20 @@
+{
+  "name": "sotsupro",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "grunt.js",
+  "dependencies": {
+    "grunt-jade": "~0.3.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fnobi/sotsupro.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "gitHead": "3659741cac8a484648e06a914f2bc69180ba779d"
+}
