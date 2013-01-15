@@ -11,6 +11,7 @@ block content
     h1 はじめに
     p 非同期処理を含むWebインタフェースを構築するための手法として、state chartを取り入れたヴィジュアルプログラミング環境を提案する。
     p 本システムを用いることで、
+
   section
     h1 背景
     section
@@ -19,37 +20,18 @@ block content
     section
       h1 HTML5の普及による影響
       p 現在のWebアプリケーション開発において、この非同期処理が担っている役割は大きい。HTML5の普及により、Webアプリケーションがよりリッチなインタフェースを持つようになったことが、その理由だ。これにより、スマートフォンへのマルチタッチや、本体を振るなど多種多様なイベントに対する振る舞いを取り扱う必要が出てきた。また、新しいデータを取得する場合にも、HTML全体をリクエストし直すより、Ajaxを用いて必要なデータのみをリクエストし、それを受け取ってインタフェースに組込む処理を行う、という流れが普通になってきている。
+
   section
     h1 研究の目的
     section
       h1 問題提起
       p ただしこの一方で、開発者にとっては分かりづらい部分も多くなっている。例えば、関数がソースコード上で書かれている順番と、実行される順番が大きく異なる場合もある。かならず立て続けに実行される処理でも、ソースコード上では一続きに書くことができない、ということが起きる。
       p ソースコードの理解しづらさは、プログラムのメンテナンス性、また共同で開発をする場合の共有のしやすさ等の観点から、開発における障害となる。しかしながら、この読みづらいコードを取り扱わなければならないという問題に対して、いまのところ抜本的な解決策はない。
+      p 本研究の目的は、こうしたWebインタフェースの非同期プログラミングにおける、メンテナンス性・共有性を改善できる、開発環境を提案することである。
     section
       h1 解決方法
       p 本研究では、この問題を解決するためのヴィジュアルプログラミング環境を作成する。実行の位置が動的に変化する非同期処理を、上から下へと進むことしかできない、テキストのプログラミングで分かりやすく表現することには、限界があるからだ。
       p 非同期処理がいくつもある形の処理は、いつどの処理が終わるのを待っているか、待ち状態の遷移の形で表現できると考えられるため、state chartを取り入れた表現方法を用いる。
-    section
-      h1 評価方法
-      ul
-        li 現行のツールと比べて、メンテナンス性やコードの共有がスムーズにできるかを評価。
-        li Javascriptとシームレスに繋げられる仕様であるべき
-          ul
-            li 別口で読み込んでおいたJavascriptの関数を使える、って形がいいな。
-            li 絶対にJavascriptプログラマーじゃないと書けないものは、読み込みJSで書いておいてしまう、ってのがいいな!!
-
-      section
-        h1 メンテナンス性
-        p 普通のJavascriptで書いたコードと、sugorokuで書いたコードそれぞれで、同じような「コードを直す」作業をやってもらう。どちらならできるか、またかかった時間はどれくらいかなどを確認。(できるひとなら1問5分、くらいのものを8問くらいはやりたいなぁ)
-
-      section
-        h1 メンテナンス性
-        p だいたい何をやっているコードなのか、答えてもらう。
-
-      section
-        h1 実験の題材
-        p twitterっぽいシステム?
-
   section
     h1 先行研究との比較
     section
@@ -64,10 +46,47 @@ block content
       h1 システム詳細
   section
     h1 評価
+
+    section
+      h1 目的の再確認
+      p 本研究の目的は、こうしたWebインタフェースの非同期プログラミングにおける、メンテナンス性・共有性を改善できる、開発環境を提案することである。この章では、今回開発したヴィジュアルプログラミング環境「sugoroku」が、プログラムのメンテナンス性・共有性を向上させることができるかどうかを評価する。
+
+    section
+      h1 実験準備
+      p まずsugorokuを使って、簡単なSNS風Webアプリケーションを作成した。また、それとほぼ同じ機能と見た目を持つアプリケーションを、sugorokuを用いずJavascriptのみで作成しておく。このJavascriptのみで作成したアプリケーションについては、公開しているJavascriptを直接書き換えることができるエディターも用意した。
+      p (実際のアプリケーションscreenshot)
+
+      ul
+        li アプリケーション本体
+        li javascript版アプリケーション
+        li javascriptエディター
+        li アンケートフォーム
+        li 実験用sugoroku codeのしくみ(非表示のcode、自動ファイル生成)
+
+    section
+      h1 実験
+      p 実験準備で作成したふたつのアプリケーションについて、被験者に以下の作業を行ってもらう。
+      ul
+        li アプリケーションを、指定した通りに作り変えてもらう。
+        li アプリケーションのある挙動を制御しているのがどの部分なのか、指差してもらう。
+
+      p またこれとは別に、アンケートで以下の項目について回答してもらった。
+
+      ul
+        li プログラミングの経験
+        li Javascriptプログラミングの経験
+        li sugorokuの操作は分かりやすかったか(5段階)
+
+    section
+      h1 実験結果
+
   section
-    h1 結び
+    h1 結論
   section
     h1 参考文献
     ul
       li: a(href="http://harp.lib.hiroshima-u.ac.jp/handle/harp/8385") HARP: Ajaxの非同期通信を利用したWebチラシの自動更新およびポータルシステムの構築
       li: a(href="http://adaptivepath.com/ideas/ajax-new-approach-web-applications") 										Ajax: A New Approach to Web Applications -								Adaptive Path
+      li: a(href="http://github.com/caolan/async") caolan/async · GitHub
+      li: a(href="http://cho45.stfuawsc.com/jsdeferred/") JSDeferred - Asynchronous library in JavaScript. Standalone and Compact
+      li: a(href="http://bizboard.nikkeibp.co.jp/houjin/cgi-bin/nsearch/md_pdf.pl/0000224168.pdf?NEWS_ID=0000224168&CONTENTS=1&bt=NCC&SYSTEM_ID=HO") 企業を熱くする最新テクノロジ Ajax 非同期通信でネット負荷を軽減 ブラウザ操作向上で業務効率改善

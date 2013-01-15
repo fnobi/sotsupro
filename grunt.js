@@ -1,14 +1,9 @@
 module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-jade');
 	grunt.initConfig({
-		// concat: {
-		// 	'all.css' : [
-		// 		'css_in/*.css'
-		// 	]
-		// },
 		jade: {
 			html: {
-				src: ['index.jade'],
+				src: ['_templates/index.jade'],
 				dest: './',
 				options: {
 					client: false
@@ -16,7 +11,7 @@ module.exports = function(grunt) {
 			}
 		},
 		watch: {
-			files: ['index.jade'],
+			files: ['_templates/*.jade'],
 			tasks: 'jade'
 		}
 	});
