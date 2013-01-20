@@ -76,9 +76,18 @@ article section section h1 {
 
 article figure {
     margin: 1em;
+}
+article blockquote {
+    background-color: #ffe;
+    padding: 0.5em 1em;
+    margin: 0em 1em
+}
+article figcaption, article em {
+    display: block;
     text-align: center;
     font-size: 80%;
     color: gray;
+    font-style: normal;
 }
 article img {
     width: 100%;

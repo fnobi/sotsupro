@@ -90,12 +90,20 @@ $(function () {
 	};
 
 	var imgIndex = function () {
-		var counter = 1;
-		$('article img')
-			.wrap('<figure />')
-			.after($('<figcaption />').text(
-				'[図' + (counter++) + ']'
-			));
+		var index = 1;
+		$('article img').each(function () {
+			var alt = $(this).attr('alt');
+
+			$(this)
+				.attr('id', 'img' + index)
+				.wrap('<figure />')
+				.after($('<figcaption />').append(
+					$('<a>[図' + index + ']</a>')
+						.attr('href', '#img' + index)
+						.append(alt ? ' - ' + alt : '')
+				));
+			index++;
+		});
 	};
 
 	var toc = new TOC();
