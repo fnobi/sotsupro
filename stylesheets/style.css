@@ -8,6 +8,12 @@ h1 {
     font-size: 100%;
 }
 
+article,section,header,figure,figcaption {
+    display: block;
+    margin: 0em;
+    padding: 0em;    
+}
+
 #wrap {
     max-width: 600px;
     margin: auto;
@@ -66,4 +72,20 @@ article section section {
 
 article section section h1 {
     border-style: none;
+}
+
+article figure {
+    margin: 1em;
+    text-align: center;
+    font-size: 80%;
+    color: gray;
+}
+article img {
+    width: 100%;
+    display: block;
+    margin: 0em auto;
+}
+
+img:after {
+    content: "hogehoge";
 }

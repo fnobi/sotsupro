@@ -89,6 +89,15 @@ $(function () {
 		return $item[0];
 	};
 
+	var imgIndex = function () {
+		var counter = 1;
+		$('article img')
+			.wrap('<figure />')
+			.after($('<figcaption />').text(
+				'[図' + (counter++) + ']'
+			));
+	};
+
 	var toc = new TOC();
 
 	$('article > section').each(function () {
@@ -96,4 +105,6 @@ $(function () {
 	});
 
 	$('#toc').append(toc.render());
+
+	imgIndex();
 });
