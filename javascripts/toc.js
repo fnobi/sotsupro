@@ -32,19 +32,22 @@ $(function () {
 	TOCSection.prototype.initHeader = function () {
 		var $section = this.$section;
 		var $header = $('h1', $section).first();
-		var index = this.index;
 
-		$header.attr('id', 'section' + index);
-		$header.prepend(index + ' ');
+		var index = this.index;
+		var id = $header.attr('id') || ('section' + index);
+
+		$header.attr('id', id);
+		$header.prepend('<a href="#' + id + '">' + index + '</a> - ');
 
 		this.$header = $header;
+
 		return $header[0];
 	};
 
 	TOCSection.prototype.initSubSections = function () {
 		var self = this;
 		var $section = this.$section;
-		var indexpre = self.index + '-';
+		var indexpre = self.index + '.';
 		var subSections = [];
 
 		if ($('section', $section)[0]) {
@@ -66,10 +69,10 @@ $(function () {
 		}
 
 		var $header = this.$header;
+		var id = $header.attr('id');
+
 		var $item = $('<li />').append(
-			$('<a />')
-				.html($header.html())
-				.attr('href', '#' + $header.attr('id'))
+			$('<a href="#' + id + '">' + $header.html() + '</a>')
 		);
 
 		var subSections = this.subSections;
