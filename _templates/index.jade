@@ -32,7 +32,7 @@ block content
     h1 研究の目的
     section
       h1 問題提起
-      p 前章で述べた非同期処理は、開発者にとっては分かりづらい部分も増やしている。例えば、関数がソースコード上で書かれている順番と、実行される順番が大きく異なる場合もある。かならず立て続けに実行される処理でも、ソースコード上では一続きに書くことができない、ということが起きる。
+      p 前章で述べた非同期処理は、開発者にとっては分かりづらい部分も増やしている。例えば、関数がソースコード上で書かれている順番と、実行される順番が大きく異なる場合もある。必ず連続して実行される処理でも、ソースコード上では一続きに書くことができない、ということも起きる。
       p ソースコードの理解しづらさは、プログラムのメンテナンス性、また共同で開発をする場合の共有のしやすさ等の観点から、開発における障害となる。しかしながら、この読みづらいコードを取り扱わなければならないという問題に対して、いまのところ抜本的な解決策はない。
       p 本研究では、こうしたWebインタフェースの非同期プログラミングにおける、メンテナンス性・共有性を改善する開発環境を提案する。
     section
@@ -81,7 +81,6 @@ block content
     section
       h1 システム仕様
       p 本研究では、Javascriptをベースにしたビジュアルプログラミング環境(以下、本システム)を実装した。本システムの開発は、Javascript(Node.jsによるサーバーサイド実装も含む)で行った。
-
     section
       h1 基本的な使い方
 
@@ -140,17 +139,13 @@ block content
     section
       h1 考察
       p 本システムを使うことで開発者は、Webの画面を開いてから、どんな時、ユーザーのどんな動作を待っているのか、それぞれの場合で何が起きるのか、一覧することができる。また、一覧することにより、バグや処理の抜け落ちを防ぐことができる。
-
       p 更に、フローチャートにも近いスタイルで、プログラムそのものを記述できるため、どのような動作をするプログラムなのか、共同作業を行う人などにも伝えやすくなる。
 
     section
       h1 実験
-      p 本研究の目的は、Webインタフェースの非同期プログラミングにおける、メンテナンス性・共有性を改善する、ツールを提案することである。この章では、今回開発したヴィジュアルプログラミング環境「sugoroku」が、プログラムのメンテナンス性・共有性を向上させることができるかどうかを評価する。
-
+      // p 本研究の目的は、Webインタフェースの非同期プログラミングにおける、メンテナンス性・共有性を改善する、ツールを提案することである。この章では、今回開発したヴィジュアルプログラミング環境「sugoroku」が、プログラムのメンテナンス性・共有性を向上させることができるかどうかを評価する。
       p まず本システムを使って、簡単なSNS風Webアプリケーションを作成した。被験者には、このアプリケーションを、いくつかの設問に応じて変更する、という作業を行ってもらった。
-
-      p 設問は以下の通り
-
+      p 設問は以下の通り。2つ目の設問以降は、所要時間も計測した。
       ol
         li 本システムのエディター画面を、とりあえず色々触ってみて下さい。
         li 最初に表示される画面を、「home」ではなく「profile」にしてみて下さい。
@@ -161,29 +156,101 @@ block content
             li home → profile → friend ではなく、
             li profile → home → friend に変えてください。
 
-      p またこれとは別に、アンケートとしてプログラミングの経験(なし・1年未満・3年未満・3年以上)も答えてもらった。
 
-    // section
-    //   h1 実験結果
+            // p またこれとは別に、アンケートとしてプログラミングの経験(なし・1年未満・3年未満・3年以上)も答えてもらった。
+    section
+      h1 実験結果
+
+      p 7人の被験者に実験を行ってもらったところ、以下のような結果が出た。なお、被験者は全員、初めてこのツールを使用し、また全員が1年以上のプログラミング経験がある。
+
+      table
+        tr
+          th
+          th 設問2
+          th 設問3
+          th 設問4
+        tr
+          th A
+          td o / 234秒
+          td o / 30秒
+          td × / 12秒
+        tr
+          th B
+          td o / 128秒
+          td o / 37秒
+          td o / 378秒
+        tr
+          th C
+          td o / 34秒
+          td o / 120秒
+          td x / 231秒
+        tr
+          th D
+          td o / 54秒
+          td o / 35秒
+          td o / 267秒
+        tr
+          th E
+          td o / 47秒
+          td o / 88秒
+          td o / 231秒
+        tr
+          th F
+          td o / 927秒
+          td o / 38秒
+          td o / 567秒
+        tr
+          th 正答数
+          td 7 / 7
+          td 7 / 7
+          td 5 / 7
+        tr
+          th 平均所要時間
+          td 237.3秒
+          td 58秒
+          td 281秒
+
+      p この実験により、以下のことが分かった。
+      ul
+        li 初めてこのツールを使う人でも、最大で15分ほどで、設問に答えられている。
+        li 最も難しい最後の設問は全員正解とはならなかったが、2問目と3問目では全員が設問の意図を理解し、修正するべき箇所をエディター上で見つけ、正答することができた。
+
+      p 以上より、本システムのエディター画面は、それが何をするプログラムなのか、どの部分がどのような役割をしているのか、表現・伝達できているものと考える。
 
   section
     h1 結論
-    p 本システムは、Webアプリケーションの非同期処理を、分かりやすく表現・記述するとして使うことができる。
+    p 本システムは、Webアプリケーションの非同期処理を、表現・記述するとして使うことができる。本研究では、適切な評価を行うことはできなかったため、機能・インタフェースの改善とともに、今後の目標としたい。
 
-  // section
-  //   h1 謝辞
+    // section
+    //   h1 謝辞
 
   section
     h1 参考文献
     ul
-      li: a(href="http://adaptivepath.com/ideas/ajax-new-approach-web-applications") Ajax: A New Approach to Web Applications - Adaptive Path
-
-      li: a(href="http://www.agilemodeling.com/artifacts/stateMachineDiagram.htm") Introduction to UML 2 State Machine Diagrams
-      li: a(href="http://harp.lib.hiroshima-u.ac.jp/handle/harp/8385") HARP: Ajaxの非同期通信を利用したWebチラシの自動更新およびポータルシステムの構築
-      li: a(href="http://github.com/caolan/async") caolan/async · GitHub
-      li: a(href="http://cho45.stfuawsc.com/jsdeferred/") JSDeferred - Asynchronous library in JavaScript. Standalone and Compact
-      li: a(href="http://bizboard.nikkeibp.co.jp/houjin/cgi-bin/nsearch/md_pdf.pl/0000224168.pdf?NEWS_ID=0000224168&CONTENTS=1&bt=NCC&SYSTEM_ID=HO") 企業を熱くする最新テクノロジ Ajax 非同期通信でネット負荷を軽減 ブラウザ操作向上で業務効率改善
-
+      li
+        | Ajax: A New Approach to Web Applications - Adaptive Path 
+        a(href="http://adaptivepath.com/ideas/ajax-new-approach-web-applications") http://adaptivepath.com/ideas/ajax-new-approach-web-applications 
+        | (閲覧日: 2013年1月22日)
+      li
+        | Introduction to UML 2 State Machine Diagrams 
+        a(href="http://www.agilemodeling.com/artifacts/stateMachineDiagram.htm") http://www.agilemodeling.com/artifacts/stateMachineDiagram.htm 
+        | (閲覧日: 2013年1月22日)
+      li
+        | HARP: Ajaxの非同期通信を利用したWebチラシの自動更新およびポータルシステムの構築 
+        a(href="http://harp.lib.hiroshima-u.ac.jp/handle/harp/8385") http://harp.lib.hiroshima-u.ac.jp/handle/harp/8385 
+        | (閲覧日: 2013年1月22日)
+      li
+        | caolan/async · GitHub 
+        a(href="http://github.com/caolan/async") http://github.com/caolan/async 
+        | (閲覧日: 2013年1月22日)
+      li
+        | JSDeferred - Asynchronous library in JavaScript. Standalone and Compact 
+        a(href="http://cho45.stfuawsc.com/jsdeferred/") http://cho45.stfuawsc.com/jsdeferred/ 
+        | (閲覧日: 2013年1月22日)
+      li
+        | 企業を熱くする最新テクノロジ Ajax 非同期通信でネット負荷を軽減 ブラウザ操作向上で業務効率改善 
+        a(href="http://bizboard.nikkeibp.co.jp/houjin/cgi-bin/nsearch/md_pdf.pl/0000224168.pdf?NEWS_ID=0000224168&CONTENTS=1&bt=NCC&SYSTEM_ID=HO") http://bizboard.nikkeibp.co.jp/houjin/cgi-bin/nsearch/md_pdf.pl/0000224168.pdf?NEWS_ID=0000224168&CONTENTS=1&bt=NCC&SYSTEM_ID=HO 
+        | (閲覧日: 2013年1月22日)
 
 
       li 三浦琢磨「ウェブサイト構築を目的とした データフロー型ビジュアルプログラミング言語 『ゆば』の開発」、『2007年度早稲田大学修士論文集』、2008

@@ -101,11 +101,14 @@ article table {
 article th {
     background-color: #333;
     color: white;
-    padding: 0.2em;
+    padding: 0.5em;
+    vertical-align: top;
+    text-align: left;
 }
 article td {
     background-color: white;
     padding: 0.2em;
+    vertical-align: top;
 }
 
 img:after {
