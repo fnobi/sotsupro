@@ -95,6 +95,19 @@ article img {
     margin: 0em auto;
 }
 
+article table {
+     background-color: gray;
+}
+article th {
+    background-color: #333;
+    color: white;
+    padding: 0.2em;
+}
+article td {
+    background-color: white;
+    padding: 0.2em;
+}
+
 img:after {
     content: "hogehoge";
 }
